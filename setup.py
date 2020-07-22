@@ -6,15 +6,17 @@ import os
 
 import numpy as np
 
-with open(
-    os.path.join(os.path.abspath(os.path.dirname(__file__)), "README.md"), encoding="utf-8",
-) as f:
+DIR = os.path.abspath(os.path.dirname(__file__))
+with open(os.path.join(DIR, "README.md"), encoding="utf-8",) as f:
     long_description = f.read()
 
 extensions = [
     Extension(
         "mujoco_py_derivatives",
-        ["src/mujoco_py_derivatives.pyx", "src/mujoco_derivatives_struct.c"],
+        [
+            os.path.join(DIR, "src/mujoco_py_derivatives.pyx"),
+            os.path.join(DIR, "src/mujoco_derivatives_struct.c"),
+        ],
         include_dirs=[
             np.get_include(),
             "{home}/.mujoco/mujoco200/include/".format(home=os.path.expanduser("~")),
@@ -27,7 +29,7 @@ extensions = [
 
 setup(
     name="mujoco-py-derivatives",
-    version="0.1.1",
+    version="0.1.2",
     ext_modules=cythonize(extensions),
     install_requires=["mujoco-py", "keyword2cmdline==1.3.0", "kwplus>=0.3.0", "numpy", "Cython"],
     package_data={"": ["*.xml", "*.stl", "*.so", "*.pyd", "*.pyx"],},
