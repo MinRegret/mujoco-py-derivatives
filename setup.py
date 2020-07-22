@@ -14,10 +14,7 @@ with open(
 extensions = [
     Extension(
         "mujoco_py_derivatives",
-        [
-            "mujoco_py_derivatives/mujoco_py_derivatives.pyx",
-            # "mujoco_py_derivatives/mujoco_py_derivatives.c",
-        ],
+        ["src/mujoco_py_derivatives.pyx", "src/mujoco_derivatives_struct.c"],
         include_dirs=[
             np.get_include(),
             "{home}/.mujoco/mujoco200/include/".format(home=os.path.expanduser("~")),
@@ -32,14 +29,15 @@ setup(
     name="mujoco-py-derivatives",
     version="0.1.1",
     ext_modules=cythonize(extensions),
-    # ext_modules=extensions,
     install_requires=["mujoco-py", "keyword2cmdline==1.3.0", "kwplus>=0.3.0", "numpy", "Cython"],
     package_data={"": ["*.xml", "*.stl", "*.so", "*.pyd", "*.pyx"],},
     author="Daniel Suo",
     author_email="danielsuo@gmail.com",
-    description=long_description,
+    description="Derivatives for MuJoCo",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     license="MIT",
-    keywords="mujoco mujoco_py derivativesative",
-    url="https://github.com/MinRegret/mujoco_py_derivatives",  # project home page, if any
+    keywords="mujoco mujoco_py derivatives",
+    url="https://github.com/MinRegret/mujoco-py-derivatives",
 )
 

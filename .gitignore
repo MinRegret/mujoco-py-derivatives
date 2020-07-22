@@ -5,3 +5,4 @@ mujoco_py_deriv.c
 *.so
 *.egg-info
 dist
+src/mujoco_py_derivatives.c
