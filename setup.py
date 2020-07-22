@@ -2,42 +2,44 @@ from setuptools import setup, find_packages
 from setuptools.extension import Extension
 from Cython.Build import cythonize
 
-import os.path as op
+import os
 
 import numpy as np
 
-def readlines(f):
-    with open(f) as fh:
-        return fh.readlines()
+with open(
+    os.path.join(os.path.abspath(os.path.dirname(__file__)), "README.md"), encoding="utf-8",
+) as f:
+    long_description = f.read()
 
 extensions = [
-    Extension("mujoco_py_deriv",
-              ["mujoco_py_deriv.pyx",
-               "mujoco_deriv_struct.c"],
-              include_dirs=[
-                  np.get_include(),
-                  "{home}/.mujoco/mujoco200/include/".format(home=op.expanduser("~"))],
-              library_dirs=["{home}/.mujoco/mujoco200/bin/".format(home=op.expanduser("~"))],
-              extra_compile_args=['-fopenmp'],
-              libraries=["mujoco200", "glew", "GL", "gomp", "m"]),
+    Extension(
+        "mujoco_py_derivatives",
+        [
+            "mujoco_py_derivatives/mujoco_py_derivatives.pyx",
+            # "mujoco_py_derivatives/mujoco_py_derivatives.c",
+        ],
+        include_dirs=[
+            np.get_include(),
+            "{home}/.mujoco/mujoco200/include/".format(home=os.path.expanduser("~")),
+        ],
+        library_dirs=["{home}/.mujoco/mujoco200/bin/".format(home=os.path.expanduser("~"))],
+        extra_compile_args=["-fopenmp"],
+        libraries=["mujoco200", "glew", "GL", "gomp", "m"],
+    ),
 ]
 
 setup(
-    name = 'mujoco_py_deriv',
-    version = '0.1.1',
-    ext_modules = cythonize(extensions),
-    package_data = {
-        '': ['*.xml', '*.stl', '*.so', '*.pyd', '*.pyx'],
-    },
-    setup_requires=readlines('pip-requirements.txt'),
-
-
-    # metadata to display on PyPI
-    author="Vikas Dhiman",
-    author_email="wecacuee@github.com",
-    description=readlines("README.md"),
+    name="mujoco-py-derivatives",
+    version="0.1.1",
+    ext_modules=cythonize(extensions),
+    # ext_modules=extensions,
+    install_requires=["mujoco-py", "keyword2cmdline==1.3.0", "kwplus>=0.3.0", "numpy", "Cython"],
+    package_data={"": ["*.xml", "*.stl", "*.so", "*.pyd", "*.pyx"],},
+    author="Daniel Suo",
+    author_email="danielsuo@gmail.com",
+    description=long_description,
     license="MIT",
-    keywords="mujoco mujoco_py derivative",
-    url="https://github.com/wecacuee/mujoco_py_deriv",   # project home page, if any
+    keywords="mujoco mujoco_py derivativesative",
+    url="https://github.com/MinRegret/mujoco_py_derivatives",  # project home page, if any
 )
 

@@ -12,7 +12,7 @@ from mujoco_py.pxd.mujoco cimport mjModel, mjData, mjtStage
 #     void compute_derivative_mp(const mjModel* m, const mjData* dmain, mjtNum*  deriv, int isforward, int nwarmup, double eps, int nthread)
 #     void checkderiv(const mjModel* m, mjtNum* deriv, mjtNum error[8])
 
-cdef extern from "mujoco_deriv_struct.h" nogil:
+cdef extern from "mujoco_derivatives_struct.h" nogil:
     mjtNum* mjd_get_ctrl        (const mjData* d)
     mjtNum* mjd_get_qpos        (const mjData* d)
     mjtNum* mjd_get_qvel        (const mjData* d)

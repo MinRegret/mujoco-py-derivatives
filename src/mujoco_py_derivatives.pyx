@@ -1,7 +1,7 @@
 # cython: language_level=3
 from cpython.mem cimport PyMem_Malloc, PyMem_Realloc, PyMem_Free
 from mujoco_py.pxd.mujoco cimport mjModel, mjData, mju_printMat, mjtNum, mju_malloc, mju_free
-cimport cmujoco_jac_struct as cmj
+from mujoco_py_derivatives.pxd cimport cmujoco_jacobian_struct as cmj
 from libc.stdint cimport uintptr_t
 from libc.stdio cimport printf
 

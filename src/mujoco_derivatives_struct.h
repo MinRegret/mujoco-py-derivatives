@@ -1,5 +1,5 @@
-#ifndef MUJOCO_DERIV_STRUCT_H
-#define MUJOCO_DERIV_STRUCT_H
+#ifndef MUJOCO_DERIVATIVES_STRUCT_H
+#define MUJOCO_DERIVATIVES_STRUCT_H
 
 #include "mujoco.h"
 

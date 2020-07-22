@@ -17,7 +17,7 @@
 #include <math.h>
 #include <assert.h>
 
-#include "mujoco_deriv_struct.h"
+#include "mujoco_derivatives_struct.h"
 
 
 // global variables: user-defined, with defaults

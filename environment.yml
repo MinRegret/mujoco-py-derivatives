@@ -1,0 +1,4 @@
+name: mujoco-py-derivatives
+dependencies:
+  - python
+  - pip
