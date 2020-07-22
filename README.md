@@ -19,8 +19,8 @@ import mujoco_py as mj
 from mujoco_py_derivatives import MjDerivative, checkderiv
 
 # Prepare mujoco model and data
-model = mj.load_model_from_path("flat_pusher_sample.xml")
-sim = mj.MjSim(model, nsubsteps=nstep)
+model = mj.load_model_from_path("tests/flat_pusher_sample.xml")
+sim = mj.MjSim(model, nsubsteps=10)
 dmain = sim.data
 
 ```
