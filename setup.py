@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 from setuptools.extension import Extension
 from Cython.Build import cythonize
 
@@ -12,10 +12,10 @@ with open(os.path.join(DIR, "README.md"), encoding="utf-8",) as f:
 
 extensions = [
     Extension(
-        "mujoco_py_derivatives",
+        "mujoco_py_derivatives.cymjd",
         [
-            os.path.join(DIR, "src/mujoco_py_derivatives.pyx"),
-            os.path.join(DIR, "src/mujoco_derivatives_struct.c"),
+            os.path.join(DIR, "mujoco_py_derivatives/cymjd.pyx"),
+            os.path.join(DIR, "mujoco_py_derivatives/mujoco_derivatives_struct.c"),
         ],
         include_dirs=[
             np.get_include(),
@@ -29,7 +29,7 @@ extensions = [
 
 setup(
     name="mujoco-py-derivatives",
-    version="0.1.3",
+    version="0.1.4",
     ext_modules=cythonize(extensions),
     install_requires=["mujoco-py", "keyword2cmdline==1.3.0", "kwplus>=0.3.0", "numpy", "Cython"],
     author="Daniel Suo",
