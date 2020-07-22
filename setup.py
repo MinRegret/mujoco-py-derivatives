@@ -29,10 +29,9 @@ extensions = [
 
 setup(
     name="mujoco-py-derivatives",
-    version="0.1.2",
+    version="0.1.3",
     ext_modules=cythonize(extensions),
     install_requires=["mujoco-py", "keyword2cmdline==1.3.0", "kwplus>=0.3.0", "numpy", "Cython"],
-    package_data={"": ["*.xml", "*.stl", "*.so", "*.pyd", "*.pyx"],},
     author="Daniel Suo",
     author_email="danielsuo@gmail.com",
     description="Derivatives for MuJoCo",
@@ -42,4 +41,3 @@ setup(
     keywords="mujoco mujoco_py derivatives",
     url="https://github.com/MinRegret/mujoco-py-derivatives",
 )
-
