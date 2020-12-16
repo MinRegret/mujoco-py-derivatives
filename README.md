@@ -1,5 +1,7 @@
 # Numerical derivatives of dynamics for mujoco
 
+NOTE: This fork only exists to keep an up-to-date version of the original in pypi
+
 * Needs mujoco licence to run.
 * Wraps [derivative.cpp](http://www.mujoco.org/book/programming.html#saDerivative) to call from Python.
 
@@ -37,7 +39,7 @@ deriv = deriv_obj.compute()
 ## Test case
 
 ``` shellsession
-python test/test_mujoco_py_deriv.py
+python tests/test_mujoco_py_deriv.py
 ```
 
 ## Dynamics with derivatives

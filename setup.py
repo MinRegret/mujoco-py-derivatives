@@ -18,12 +18,12 @@ extensions = [
                   np.get_include(),
                   "{home}/.mujoco/mujoco200/include/".format(home=op.expanduser("~"))],
               library_dirs=["{home}/.mujoco/mujoco200/bin/".format(home=op.expanduser("~"))],
-              extra_compile_args=['-fopenmp'],
+              extra_compile_args=['-fopenmp -g'],
               libraries=["mujoco200", "glew", "GL", "gomp", "m"]),
 ]
 
 setup(
-    name = 'mujoco_py_deriv',
+    name = 'mujoco-py-derivatives',
     version = '0.2.0',
     ext_modules = cythonize(extensions),
     package_data = {
@@ -36,11 +36,11 @@ setup(
 
 
     # metadata to display on PyPI
-    author="Vikas Dhiman",
-    author_email="wecacuee@github.com",
+    author="Daniel Suo",
+    author_email="danielsuo@gmail.com",
     description=readlines("README.md"),
     license="MIT",
     keywords="mujoco mujoco_py derivative",
-    url="https://github.com/wecacuee/mujoco_py_deriv",   # project home page, if any
+    url="https://github.com/MinRegret/mujoco-py-derivatives",   # project home page, if any
 )
 
